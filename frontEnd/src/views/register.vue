@@ -111,8 +111,12 @@ export default {
                 this.$message.error('请输入用户名')
             } else if (!this.ruleForm.pass) {
                 this.$message.error('请输密码')
+            } else if (this.ruleForm.pass.length < 6) {
+                this.$message.error('密码至少为6位')
             } else if (!this.ruleForm.checkPass) {
                 this.$message.error('请再次输密码')
+            } else if (this.ruleForm.pass !== this.ruleForm.checkPass) {
+                this.$message.error('密码不一致')
             } else if (!this.ruleForm.verify) {
                 this.$message.error('请输验证码')
             } else if (this.ruleForm.verify.length != 4 ) {

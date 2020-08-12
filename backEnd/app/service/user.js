@@ -4,6 +4,7 @@ const Service = require('egg').Service;
 
 class UserService extends Service {
 	async register(param) {
+        console.log("UserService -> register -> param", param)
 		if (param.verify.toLowerCase() !== param.cap.toLowerCase()) {
 			return {
 				error: 1,
@@ -14,6 +15,12 @@ class UserService extends Service {
 			return {
 				error: 1,
 				msg: '无效的用户名'
+			}
+		}
+		if (!param.pass.trim() || param.pass.length < 6) {
+			return {
+				error: 1,
+				msg: '密码必须长于6位'
 			}
 		}
 		const checkName = await this.app.mysql.select('userinfo', {
@@ -27,15 +34,10 @@ class UserService extends Service {
 				msg: '用户名已存在'
 			}
 		}
-		if (!param.pass.trim() || param.pass.length < 6) {
-			return {
-				error: 1,
-				msg: '无效的密码'
-			}
-		}
 		const result = await this.app.mysql.insert('userinfo', {
 			username: param.username,
-			password: param.pass
+			password: param.pass,
+			create_time: new Date()
 		});
 		// 判断插入成功
 		if (result.affectedRows === 1) {

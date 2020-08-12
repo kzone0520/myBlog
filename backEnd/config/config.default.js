@@ -51,7 +51,7 @@ module.exports = appInfo => {
     domainWhiteList: ['*']
   };
   config.cors = {
-    origin: 'http://localhost:8080',
+    origin: 'http://127.0.0.1:8080',
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
     credentials: true
   };
