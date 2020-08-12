@@ -13,5 +13,9 @@ module.exports = {
   cors: {
     enable: true,
     package: 'egg-cors',
+  },
+  nunjucks: {
+    enable: true,
+    package: 'egg-view-nunjucks'
   }
 };

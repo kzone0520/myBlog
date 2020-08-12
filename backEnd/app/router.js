@@ -12,4 +12,6 @@ module.exports = app => {
   router.get('/addArticle', controller.article.addAtricle);
   router.get('/articles', controller.article.articles);
   router.get('/articleDetaile', controller.article.detail);
+ // demo 
+  router.get('/news', controller.demo.list);
 };
