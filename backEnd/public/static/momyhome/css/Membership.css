@@ -1,0 +1,374 @@
+.inner{
+    width: 1200px;
+}
+input{
+    border: none;
+    border-bottom: 2px #ccc solid;
+}
+.wrap{
+    width: 820px;
+    padding: 40px;
+    padding-top: 10px;
+}
+.table{
+    width: 210mm;
+    height: 294mm;
+}
+.h_title{
+    height: 60px;
+    line-height: 60px;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+}
+.logo_first{
+    width: 250px;
+    height: 60px;
+    float: right;
+}
+.logo_first img{
+    width: 100%;
+}
+.h_number{
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: right;
+}
+.header{
+    margin-bottom: 20px;
+}
+.h_input{
+    padding-left: 10px;
+    width: 170px;
+    border: none;
+    border-bottom: 2px #ccc solid;
+}
+.main .m_title{
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.s_information{
+    margin: 20px 0;
+}
+.s_information li{
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    margin: 0 20px;
+}
+.sex p, .sex form{
+    float: left;
+}
+.s_information li .input_s{
+    width: 81px;
+    padding-left: 10px;
+    border: none;
+    border-bottom: 2px #ccc solid;
+}
+.s_information .birth .input_s{
+    width: 40px;
+}
+.name span{
+    display: inline-block;
+    text-indent: 2px;
+}
+.s_information .classes{
+    margin-left: -6px;
+}
+.s_information .classes select{
+    width: 81px;
+    padding-left: 10px;
+    border: none;
+    border-bottom: 2px #ccc solid;
+    font-size: 12px;
+}
+.s_information .nurse input{
+    width: 84px;
+    padding-left: 10px;
+    border: none;
+    border-bottom: 2px #ccc solid;
+}
+.s_information .ID_number .input_s{
+    width: 160px;
+}
+.parent_msg  li{
+    line-height: 30px;
+    display: flex;
+}
+.parent_msg  li>div{
+    flex: 1;
+}
+.parent_msg  li>div input{
+    width: 243px;
+    padding-left: 10px;
+    border: none;
+    border-bottom: 2px #ccc solid;
+}
+.Party h3{
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+}
+.Party p{
+    line-height: 20px;
+    font-size: 13px;
+}
+.hy_message h3{
+    font-size: 15px;
+    font-weight: bold;
+}
+.hy_message form span{
+    vertical-align: middle;
+}
+.hy_message form input {
+    margin: 0 20px;
+    margin-right: 0;
+    vertical-align: middle;
+}
+.pay_msg{
+    border: 1px #ccc solid;
+    border-right: none;
+}
+.pay_msg .pay01>p{
+    float: left;
+    margin-right: 20px;
+}
+.pays{
+    height: 120px;
+    border: 1px #ccc solid;
+    border-bottom: none;
+}
+.beizhu{
+    border: 1px #ccc solid;
+    border-top: none;
+    font-size: 14px;
+}
+.beizhu h1 {
+    font-size: 18px;
+    line-height: 2;
+    font-weight: normal;
+}
+.pay_msg{
+    float: left;
+    width: 50%;
+    border-left: none;
+}
+.pay_mode{
+    float: left;
+    width: 48%;
+    height: 100%;
+}
+.pay_mode p{
+    float: left;
+    padding-left: 60px;
+    height: 30px;
+    line-height: 30px;
+}
+.code{
+    width: 110px;
+    height: 110px;
+    margin: 0 auto;
+    background: #ccc;
+}
+.qs .parent_msg li>div{
+    margin: 10px 0;
+}
+.qs .parent_msg li>div input{
+    width: 300px;
+}
+.el-input__inner{
+    height: 30px!important;;
+    line-height: 30px!important;;
+    width: 126px!important;;
+    border: none!important;
+    border-radius: 0px!important;;
+    border-bottom: 1px #ccc solid;
+}
+.el-input__icon{
+    line-height: 30px!important;
+}
+.date h4{
+    height: 30px!important;
+    line-height: 30px!important;
+}
+.pay01{
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    border-bottom: 1px #ccc solid;
+}
+.names select{
+    width: 200px;
+    /* height: 30px;
+    line-height: 30px; */
+}
+.babyname{
+    position: relative;
+}
+.search_name{
+    width: 130px;
+    height: auto;
+    min-height: 10px;
+    background: #fff;
+    border: 1px #000 solid;
+    position: absolute;
+    left: 30px;
+    padding: 10px 10px;
+    display: none;
+    z-index: 10;
+}
+.search_name li{
+    width: 100%;
+    display: flex;
+    margin: 0;
+}
+.search_name li:hover{
+    cursor: pointer;
+}
+.search_name li>span{
+    flex: 1;
+    text-align: center;
+}
+.ac{
+    display: block;
+}
+.sm_name:hover{
+    cursor: no-drop;
+} 
+.sm_name{
+    background: none;
+}
+.el-radio{
+    float: left!important;
+    height: 30px!important;
+    line-height: 30px!important;
+    margin: 0 10px!important;
+}
+.parents{
+    position: relative;
+}
+.parents button {
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 17px;
+    border-radius: 50%;
+    border: 2px #000 solid!important;
+    color: #000;
+    background: none;
+}
+.parents .add{
+    left: -30px;
+}
+.parents .del{
+    right: 10px;
+}
+.relationships{
+    width: 64px;
+    padding-left: 20px;
+    height: 25px;
+    line-height: 25px;
+    border: none;
+    border-bottom: 2px #ccc solid;
+    font-size: 12px;
+}
+.hy_message form .el-radio{
+    float: none;
+}
+/* .date .block .el-input__inner{
+    width: 136px;
+} */
+.el-date-editor.el-input, .el-date-editor.el-input__inner{
+    width: 150px!important;;
+    
+}
+.el-input--suffix .el-input__inner{
+    padding-right: 0!important;
+}
+.end_time{
+    width: 116px;
+    height: 30px;
+    padding-left: 20px;
+}
+input::placeholder{
+    color: #000;
+}
+.pay_money{
+    width: 50px;
+    height: 18px;
+}
+.pay_moneys{
+    width: 160px;
+    border: none;
+    font-size: 12px;
+    height: 14px;
+}
+.code img{
+    width: 100%;
+}
+.el-input__inner{
+    border-bottom: none!important;
+}
+.pay_name{
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+.pay_name input{
+    width: 100px;
+}
+.pay_date{
+    float: left;
+}
+.cailiao{
+    background: none;
+}
+.cailiao:hover{
+    cursor: no-drop;
+}
+.qs .parent_msg li select{
+    border: none;
+    border-bottom: 2px #ccc solid;
+}
+.qs .parent_msg li .tse .el-input__inner{
+    width: 200px;
+}
+.ready_pay{
+    line-height: 100px;
+    text-align: center;
+    font-weight: bold;
+}
+.jiafang{
+    background: #fff;
+}
+.jiafang:hover{
+    cursor: no-drop;
+}
+.dis{
+    display: block;
+}
+.addCont{
+    display: block;
+    width: 120px;
+    height: 40px;
+    margin: 10px auto;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    border: 1px #ccc solid;
+    background: #fff;
+}
+.qianshu:hover{
+    cursor: no-drop;
+}
+.s_name .el-radio__label{
+    padding-left: 5px;
+}
+/* .date .block .el-input__inner{
+    width: 300px;
+} */
