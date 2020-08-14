@@ -68,6 +68,9 @@ module.exports = appInfo => {
       '.tpl': 'nunjucks',
     },
   };
+  config.multipart = {
+    mode:'file'
+  }
   // config.demo = {
   //   pageSize: 5,
   //   serverUrl: 'https://hacker-news.firebaseio.com/v0',

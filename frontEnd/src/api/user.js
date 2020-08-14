@@ -20,8 +20,15 @@ const login = {
         return instance.post(`${preUrlPath}/login`, params)
     }
 };
+const upload = {
+    ps: ['post, /upload'],
+    $http: params => {
+        return instance.post(`${preUrlPath}/upload`, params)
+    }
+}
 export {
     register,
     verify,
-    login
+    login,
+    upload
 }

@@ -1,7 +1,10 @@
 'use strict';
 
+const fs = require('fs');
+const path = require('path');
 const Controller = require('egg').Controller;
 const svgCaptcha = require('svg-captcha');
+const { dirname } = require('path');
 
 class UserController extends Controller {
 	// 注册
@@ -44,6 +47,21 @@ class UserController extends Controller {
 		let param = ctx.request.body || {}
 		let res = await ctx.service.user.login(param)
 		ctx.body = res
+	}
+
+	//头像上传
+	async uploadavatar() {
+		const { ctx } = this;
+		//获取file
+		let file = ctx.request.files[0];
+		console.log(file);
+		//读取文件
+		const data = fs.readFileSync(file.filepath);
+		const base64str = Buffer.from(data, 'binary').toString('base64');
+		const bufferData = Buffer.from(base64str, 'base64');
+		//将文件存到指定路径
+		fs.writeFileSync(path.join(__dirname, '/../../public/static/images/test.png'), bufferData);
+		ctx.body = { code: 200, message: 'success', file: file.filename }
 	}
 }
 

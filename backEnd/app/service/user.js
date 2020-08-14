@@ -84,5 +84,9 @@ class UserService extends Service {
 			}
 		}
 	}
+
+	async uploadavatar(param) {
+		
+	}
 }
 module.exports = UserService;
