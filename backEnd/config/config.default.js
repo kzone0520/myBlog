@@ -62,19 +62,9 @@ module.exports = appInfo => {
     httpOnly: true,
     encrypt: true,
   };
-  config.view = {
-    defaultViewEngine: 'nunjucks',
-    mapping: {
-      '.tpl': 'nunjucks',
-    },
-  };
   config.multipart = {
     mode:'file'
   }
-  // config.demo = {
-  //   pageSize: 5,
-  //   serverUrl: 'https://hacker-news.firebaseio.com/v0',
-  // };
   return {
     ...config,
     ...userConfig,

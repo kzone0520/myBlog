@@ -13,6 +13,4 @@ module.exports = app => {
   router.get('/articles', controller.article.articles);
   router.get('/articleDetaile', controller.article.detail);
   router.post('/uploadavatar', controller.user.uploadavatar);
- // demo 
-  router.get('/news', controller.demo.list);
 };
