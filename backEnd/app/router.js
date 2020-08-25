@@ -12,7 +12,9 @@ module.exports = app => {
   router.get('/addArticle', controller.article.addAtricle);
   router.get('/articles', controller.article.articles);
   router.get('/articleDetaile', controller.article.detail);
-  router.post('/uploadavatar', controller.user.uploadavatar);
+  router.post('/upload', controller.user.upload);
+  router.get('/loginOut',controller.user.loginOut);
+  router.get('/queryUserInfo',controller.user.queryUserInfo);
  // demo 
   router.get('/news', controller.demo.list);
 };

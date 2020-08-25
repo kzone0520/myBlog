@@ -46,22 +46,59 @@ class UserController extends Controller {
 		const ctx = this.ctx
 		let param = ctx.request.body || {}
 		let res = await ctx.service.user.login(param)
+		if (res.msg === '登录成功') {
+			let userInfo = `${JSON.stringify(res.data)}`
+			ctx.cookies.set('userInfo', userInfo, {
+				maxAge: 1000 * 3600 * 24,
+				httpOnly: false,
+				signed: false
+			})
+		}
+		ctx.body = res
+	}
+
+	//登出
+	async loginOut() {
+		const ctx = this.ctx
+		let param = ctx.request.query || ''
+		let res = await ctx.service.user.loginOut(param)
+		if(res.msg === 'OK') {
+			ctx.cookies.set('userInfo', '', {
+				maxAge: 1000 * 3600 * 24,
+				httpOnly: false,
+				signed: false
+			})
+		}
+		ctx.body = res
+	}
+
+
+	//查询用户详情信息
+	async queryUserInfo() {
+		const ctx = this.ctx
+		let param = ctx.request.query || ''
+		let res = await ctx.service.user.queryUserInfo(param);
 		ctx.body = res
 	}
 
 	//头像上传
-	async uploadavatar() {
+	async upload() {
 		const { ctx } = this;
 		//获取file
 		let file = ctx.request.files[0];
-		console.log(file);
 		//读取文件
 		const data = fs.readFileSync(file.filepath);
 		const base64str = Buffer.from(data, 'binary').toString('base64');
 		const bufferData = Buffer.from(base64str, 'base64');
 		//将文件存到指定路径
-		fs.writeFileSync(path.join(__dirname, '/../../public/static/images/test.png'), bufferData);
-		ctx.body = { code: 200, message: 'success', file: file.filename }
+		var filename = path.join(__dirname, `/../public/assets/${file.filename}`)
+		fs.writeFileSync(filename, bufferData);
+		let userInfo = ctx.cookies.get('userInfo',{
+			signed: false,
+		});
+		console.log(userInfo);
+		// await ctx.service.user.upload(file)
+		ctx.body = { code: 200, message: 'success', file: `http://127.0.0.1:7001/public/assets/${file.filename}` }
 	}
 }
 

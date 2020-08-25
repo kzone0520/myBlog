@@ -17,7 +17,7 @@ module.exports = appInfo => {
 
   // add your middleware config here
   config.middleware = [];
-
+  
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
@@ -71,10 +71,7 @@ module.exports = appInfo => {
   config.multipart = {
     mode:'file'
   }
-  // config.demo = {
-  //   pageSize: 5,
-  //   serverUrl: 'https://hacker-news.firebaseio.com/v0',
-  // };
+  
   return {
     ...config,
     ...userConfig,

@@ -7,7 +7,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/normalize.css'
 import Header from './component/Header'
-
+import { setCookie, getCookie,delCookie } from '@/assets/js/cookie.js';
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 
@@ -21,6 +21,13 @@ Vue.filter('formatTime', function (value) {
 
   return da.getFullYear() + "-" + (da.getMonth() + 1) + "-" + da.getDate() + " " + da.getHours() + ":" + da.getMinutes() + ":" + da.getSeconds();
 })
+
+
+Vue.prototype.$cookieStore = {
+  setCookie,
+  getCookie,
+  delCookie
+}
 
 
 /* eslint-disable no-new */

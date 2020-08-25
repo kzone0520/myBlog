@@ -37,7 +37,8 @@ class UserService extends Service {
 		const result = await this.app.mysql.insert('userinfo', {
 			username: param.username,
 			password: param.pass,
-			create_time: new Date()
+			create_time: new Date(),
+			update_time: new Date()
 		});
 		// 判断插入成功
 		if (result.affectedRows === 1) {
@@ -67,9 +68,20 @@ class UserService extends Service {
 		});
 		if ( checkLogin && checkLogin.length > 0 ) {
 			if (checkLogin[0].password === param.password) {
+				const checkLoginStatus = {
+					login_status:1,
+				}
+
+				const options = {
+					where: {
+						user_id:checkLogin[0].user_id,
+					}
+				}
+				const result = await this.app.mysql.update('userinfo',checkLoginStatus,options);
 				return {
 					error: 0,
-					msg: '登录成功'
+					msg: '登录成功',
+					data:checkLogin[0]
 				} 
 			} else {
 				return {
@@ -85,7 +97,37 @@ class UserService extends Service {
 		}
 	}
 
-	async uploadavatar(param) {
+	async loginOut(param) {
+		const checkLoginStatus = {
+			login_status:0,
+		}
+
+		const options = {
+			where: {
+				user_id:param.user_id
+			}
+		}
+		const result = await this.app.mysql.update('userInfo',checkLoginStatus,options)
+		return {
+			error: 0,
+			msg: 'OK',
+		} 
+	}
+
+	async queryUserInfo(param) {
+		const userInfo = await this.app.mysql.select('userinfo', {
+			where: {
+				username: param.id
+			}, 
+		});
+		return {
+			error: 0,
+			msg:'OK',
+			data:userInfo
+		}
+	}
+
+	async upload(file) {
 		
 	}
 }

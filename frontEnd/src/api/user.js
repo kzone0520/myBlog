@@ -26,9 +26,16 @@ const upload = {
         return instance.post(`${preUrlPath}/upload`, params)
     }
 }
+const loginOut = {
+    ps: ['get, /loginOut'],
+    $http: params => {
+        return instance.get(`${preUrlPath}/loginOut`, {params})
+    }
+};
 export {
     register,
     verify,
     login,
-    upload
+    upload,
+    loginOut
 }
