@@ -62,16 +62,9 @@ module.exports = appInfo => {
     httpOnly: true,
     encrypt: true,
   };
-  config.view = {
-    defaultViewEngine: 'nunjucks',
-    mapping: {
-      '.tpl': 'nunjucks',
-    },
-  };
   config.multipart = {
     mode:'file'
   }
-  
   return {
     ...config,
     ...userConfig,
