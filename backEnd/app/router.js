@@ -15,6 +15,4 @@ module.exports = app => {
   router.post('/upload', controller.user.upload);
   router.get('/loginOut',controller.user.loginOut);
   router.get('/queryUserInfo',controller.user.queryUserInfo);
- // demo 
-  router.get('/news', controller.demo.list);
 };

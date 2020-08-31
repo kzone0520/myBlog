@@ -2,12 +2,13 @@
   <div class="Header">
     <!-- 用户资料 -->
     <div class="userInfo">
-      <h4 v-if="userInfo.login_status === 1" class="title">
-        <span>{{ userInfo.username }}您好！</span>
+      <h4 v-if="status === 1" class="title LoggedUtils">
+        <img @click="showModel" class="avatarImg" src="@/assets/imgs/touxiang.png" alt />
+        <span style="color:red">{{ userInfo.username }}您好！</span>
         <a @click="userLogOut">退出登录</a>
       </h4>
-      <h4 v-else class="title">
-        <span>xxx您好！</span>
+      <h4 v-if="status === 0" class="title">
+        <span style="color:red">xxx您好！</span>
         <a @click="login">请登录</a>
       </h4>
     </div>
@@ -17,6 +18,33 @@
       <el-input placeholder="密码" v-model="password" show-password></el-input>
       <el-button type="primary" @click="userLogin">登录</el-button>
     </el-dialog>
+
+    <el-dialog title="提示" :visible.sync="dialogModel" width="30%" :before-close="handleClosed">
+      <el-upload
+        class="avatar-uploader"
+        action="https://jsonplaceholder.typicode.com/posts/"
+        :show-file-list="false"
+        :on-success="handleAvatarSuccess"
+        :before-upload="beforeAvatarUpload"
+      >
+        <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+      </el-upload>
+      <h3>luis</h3>
+      <button>管理你的博客账户</button>
+    </el-dialog>
+
+
+    <el-upload
+  class="avatar-uploader"
+  action="http://127.0.0.1:7001/upload"
+  :show-file-list="false"
+  :on-success="handleAvatarSuccess"
+  :before-upload="beforeAvatarUpload">
+  <img v-if="imageUrl" :src="imageUrl" class="avatar">
+  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+</el-upload>
+
   </div>
 </template>
 
@@ -29,28 +57,33 @@ export default {
       imageUrl: "",
       userInfo: "",
       dialogTableVisible: false,
+      dialogModel: false,
       username: "",
       password: "",
-      msg:'loginOut'
+      status: 0,
     };
   },
   inject: ["reload"],
   created() {
     if (this.$cookieStore.getCookie("userInfo")) {
       this.userInfo = JSON.parse(this.$cookieStore.getCookie("userInfo"));
+      this.status = this.userInfo.login_status;
     }
   },
 
-  mounted() {
+  mounted() {},
 
-  },
-
-  updated() {
-
-  },
+  updated() {},
   methods: {
     login() {
       this.dialogTableVisible = true;
+    },
+
+    showModel() {
+      this.dialogModel = true;
+    },
+    handleClosed() {
+      this.dialogModel = false;
     },
 
     async userLogOut() {
@@ -58,9 +91,10 @@ export default {
         user_id: this.userInfo.user_id,
       });
       if (res.error === 0) {
-        this.$nextTick(function(){
-          this.userInfo = '';
-        })
+        this.$nextTick(function () {
+          this.userInfo = "";
+          this.status = 0;
+        });
       }
     },
 
@@ -72,18 +106,21 @@ export default {
       if (res.error === 0) {
         this.$message.success(res.msg);
         this.dialogTableVisible = false;
-        this.$router.push("/index");
-        this.$nextTick(function(){
-          this.userInfo = JSON.parse(this.$cookieStore.getCookie("userInfo"));
-        })
+        this.userInfo = JSON.parse(this.$cookieStore.getCookie("userInfo"));
+        this.status = 1;
       } else {
         this.$message.error(res.msg);
       }
     },
 
-    myCallBack() {
-      this.reload();
-    },
+     handleAvatarSuccess(res, file) {
+        this.imageUrl = URL.createObjectURL(file.raw);
+      },
+      beforeAvatarUpload(file) {
+        const isJPG = file.type === 'image/jpeg';
+        const isLt2M = file.size / 1024 / 1024 < 2;
+
+      }
   },
 };
 </script>
@@ -160,6 +197,13 @@ export default {
       .el-button {
         width: 100%;
       }
+    }
+  }
+  .LoggedUtils {
+    display: flex;
+    align-items: center;
+    img {
+      margin: 0 10px;
     }
   }
 }

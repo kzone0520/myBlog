@@ -61,7 +61,6 @@ export default {
       let res = await articles.$http();
       if (res.error === 0) {
         this.articlesList = res.data;
-        console.log(this.articlesList);
       } else {
         this.$message.error(res.msg);
       }

@@ -86,6 +86,7 @@ class UserController extends Controller {
 		const { ctx } = this;
 		//获取file
 		let file = ctx.request.files[0];
+		console.log(ctx.request.files);
 		//读取文件
 		const data = fs.readFileSync(file.filepath);
 		const base64str = Buffer.from(data, 'binary').toString('base64');
